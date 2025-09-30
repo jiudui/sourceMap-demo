@@ -10,23 +10,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
       - uses: pnpm/action-setup@v2
         with:
-          version: 10.17.1
+          version: 8.6.2
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v3
         with:
-          node-version: 20.x
-
+          node-version: 16.x
       - run: npm install
-
       - run: npm run build
 
       # 如果部署到 GitHub Pages
-      - name: Deploy to GitHub Pages
-      - uses: peaceiris/actions-gh-pages@v4
+      - name: action-Deploy
+      - uses: peaceiris/actions-gh-pages@v3
         with:
-          branch: gh-pages # 部署到 gh-pages 分支
+          BRANCH: gh-pages # 部署到 gh-pages 分支
           github_token: ${{ secrets.SOURCEMAPDEMO }}
           publish_dir: ./dist
