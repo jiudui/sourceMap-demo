@@ -2,6 +2,7 @@
 import { onMounted, ref } from 'vue'
 import { ElMessage } from 'element-plus'
 import sourceMapJs from 'source-map-js'
+import PreView from './PreView.vue'
 const js_error = ref<any>(null)
 const isError = ref(false)
 const activeName = ref<string[]>(['1'])
@@ -69,7 +70,6 @@ const getSource = async (sourceMap: string, line: number, column: number) => {
 
     const source = consumer.sourceContentFor(originalPosition.source || '', true)
 
-    console.log('source', source, originalPosition)
     return {
       source,
       column: originalPosition.column,
@@ -103,7 +103,7 @@ const getSource = async (sourceMap: string, line: number, column: number) => {
         </el-row>
         <el-row :gutter="20">
           <template v-if="item.origin">
-            {{ item.origin }}
+            <PreView :origin="item.origin" />
           </template>
           <template v-else>
             <div>{{ item.fileName }}</div>
