@@ -4,6 +4,7 @@ import { ElMessage } from 'element-plus'
 import sourceMapJs from 'source-map-js'
 const js_error = ref<any>(null)
 const isError = ref(false)
+const activeName = ref<string[]>(['1'])
 let stackFramesObj = {
   line: 0,
   column: 0,
@@ -36,8 +37,9 @@ const openDialog = (item: any, index: number) => {
 const tabActiveName = ref('local')
 
 const sourceMapUpload = async (file: File) => {
-  if (!file.name.endsWith('.map')) {
+  if (file.name.substring(file.name.lastIndexOf('.') + 1) !== 'map') {
     ElMessage.error('请上传正确的sourceMap文件')
+    return
   }
 
   const reader = new FileReader()
@@ -67,6 +69,7 @@ const getSource = async (sourceMap: string, line: number, column: number) => {
 
     const source = consumer.sourceContentFor(originalPosition.source || '', true)
 
+    console.log('source', source, originalPosition)
     return {
       source,
       column: originalPosition.column,
@@ -110,8 +113,8 @@ const getSource = async (sourceMap: string, line: number, column: number) => {
     </el-collapse>
   </div>
 
-  <el-dialog v-model="dialogVisible" title="源码映射" width="500">
-    <el-tabs v-model="tabActiveName">
+  <el-dialog v-model="dialogVisible" width="500" title="sourceMap源码映射">
+    <el-tabs v-model="tabActiveName" class="demo-tabs">
       <el-tab-pane label="本地上传" name="local">
         <el-upload drag :before-upload="sourceMapUpload">
           <i classs="el-icon-upload"></i>

@@ -9,9 +9,9 @@
 </template>
 <script setup lang="ts">
 const triggerTypeError = () => {
-  // if (!typeError.length > 0) {
-  //   console.log('TypeError')
-  // }
+  if (!typeError.length > 0) {
+    console.log('TypeError')
+  }
 }
 
 const triggerReferenceTypeError = () => {
