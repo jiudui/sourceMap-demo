@@ -1,33 +1,27 @@
-<script setup lang="ts">
-import { onMounted } from 'vue'
-import { RouterLink, RouterView } from 'vue-router'
-// import HelloWorld from './components/HelloWorld.vue'
-
-onMounted(() => {
-  // const test = null
-  // if ((test.length = 1)) {
-  //   console.log('报错了')
-  // }
-})
-</script>
-
 <template>
-  <header>
-    <!-- <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" /> -->
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <!-- <RouterLink to="/about">About</RouterLink> -->
-        <RouterLink to="/trigger">触发js异常</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+  <div class="about">
+    <p @click="triggerTypeError">触发TypeError</p>
+    <e-divider></e-divider>
+    <p @click="triggerReferenceTypeError">触发ReferenceTypeError</p>
+    <e-divider></e-divider>
+    <p @click="triggerSyntaxError">触发SyntaxError</p>
+  </div>
 </template>
+<script setup lang="ts">
+const triggerTypeError = () => {
+  // if (!typeError.length > 0) {
+  //   console.log('TypeError')
+  // }
+}
+
+const triggerReferenceTypeError = () => {
+  throw new ReferenceError('This is a reference error example')
+}
+
+const triggerSyntaxError = () => {
+  throw new SyntaxError('This is a syntax error example')
+}
+</script>
 
 <style scoped>
 header {
