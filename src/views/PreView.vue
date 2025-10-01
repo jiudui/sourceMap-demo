@@ -39,7 +39,7 @@ export default {
 }
 </script>
 
-<style scoped lang="less">
+<style>
 .pre-code {
   .error-code {
     padding: 10px;

@@ -53,8 +53,10 @@ const sourceMapUpload = async (file: File) => {
     )
 
     js_error.value.stack_frames[stackFramesObj.index].origin = code
+    dialogVisible.value = false
   }
-  dialogVisible.value = false
+
+  return false //阻止上传
 }
 
 const getSource = async (sourceMap: string, line: number, column: number) => {
