@@ -8,7 +8,7 @@ const getSourceMapUrl = async (scriptUrl: string) => {
 }
 
 export const findCodeBySourceMap = async (stackName: any) => {
-  const sourceMap = await getSourceMapUrl(stackName?.fileName || '')
+  const sourceMap = await getSourceMapUrl((stackName?.fileName || '') + '.map')
   const fileContent = sourceMap.data as string
   console.log('fileContent', fileContent)
 
