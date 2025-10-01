@@ -1,0 +1,2 @@
+import{d as a,c,a as e,b as o,r as i,o as p,_}from"./index-7dX7Kf4y.js";const d={class:"about"},l=a({__name:"ErrorView",setup(E){const t=()=>{},n=()=>{throw new ReferenceError("This is a reference error example")},s=()=>{throw new SyntaxError("This is a syntax error example")};return(f,m)=>{const r=i("e-divider");return p(),c("div",d,[e("p",{onClick:t},"触发TypeError"),o(r),e("p",{onClick:n},"触发ReferenceTypeError"),o(r),e("p",{onClick:s},"触发SyntaxError")])}}}),y=_(l,[["__scopeId","data-v-cbd6109f"]]);export{y as default};
+//# sourceMappingURL=ErrorView-ZLm4YG5l.js.map
