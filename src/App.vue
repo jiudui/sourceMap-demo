@@ -16,12 +16,14 @@ onMounted(() => {
     <!-- <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" /> -->
 
     <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+      <!-- <HelloWorld msg="You did it!" /> -->
 
       <nav>
         <RouterLink to="/">Home</RouterLink>
-        <!-- <RouterLink to="/about">About</RouterLink> -->
+        <RouterLink to="/about">About</RouterLink>
         <RouterLink to="/trigger">触发js异常</RouterLink>
+        <RouterLink to="/record">录制</RouterLink>
+        <RouterLink to="/play">回放</RouterLink>
       </nav>
     </div>
   </header>
@@ -77,6 +79,7 @@ nav a:first-of-type {
   }
 
   header .wrapper {
+    width: 500px;
     display: flex;
     place-items: flex-start;
     flex-wrap: wrap;
